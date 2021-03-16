@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel='icon' href='favicon.ico' type='image/x-icon' />
+  <meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adjustable Background with CSS/JS</title>
+
+  <style>
+    /* CSS VARIABLES */
+    :root {
+      --overlay-color: #258a34;
+      --overlay-opacity: .6;
+      --background-blur: 10px;
+    }
+      
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      background-color: #000;
+    }
+
+    .wrapper {
+      min-height: 100vh;
+      padding: 30px 0;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    main {
+      width: 80%;
+      max-width: 800px;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      color: white;
+      line-height: 1.4;
+      z-index: 1;
+      margin-bottom: 20px;
+    }
+
+    main a {
+      z-index: 4;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin-bottom: 16px;
+    }
+
+    .avatar {
+      border-radius: 50%;
+      width: 50%;
+      max-width: 260px;
+      margin: 8px 0;
+    }
+
+    h1 {
+      font-weight: lighter;
+      margin: 0;
+    }
+
+    .watermark {
+      cursor: pointer;
+      position: fixed;
+      display: flex;
+      bottom: 0;
+      background-color: #eee;
+      height: 20px;
+      width: 100%;
+      padding: 8px;
+      color: #fff;
+      font-size: .8rem;
+      background-color: #000;
+      font-family: Raleway;
+      z-index: 3;
+    }
+    .watermark img {
+      height: 20px;
+      margin-right: 8px;
+      margin-top: 2px;
+    }
+    .watermark div {
+      margin-top: 2px;
+    }
+    a {
+      color: white;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-color: var(--overlay-color);
+      opacity: var(--overlay-opacity);
+    }
+
+    .background_image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background-image: url("https://unsplash.it/1440/900?image=599");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      filter: blur(var(--background-blur));
+    }
+
+    .content__more {
+      margin-bottom: 16px;
+    }
+    .content__toggle {
+      cursor: pointer;
+    }
+
+    .hid {
+      height: 0;
+      opacity: 0;
+      transition: .5s linear;
+      cursor: default;
+      display:none;
+    }
+
+    .links {
+      padding-top: 16px;
+      display: flex;
+      flex-wrap:wrap;
+      justify-content: center;
+    }
+
+    button {
+      font-size: 1.4rem;
+      padding: 8px;
+      border: 1px solid #fff;;
+      border-radius: 8px;
+      width: 100%;
+      min-width: 180px;
+      max-width: 360px;
+      margin: 8px;
+      color: #fff;
+      background: transparent;
+    }
+    button:focus, button:hover {
+      background-color: rgba(0,0,0,.1);
+    }
+
+    .donation {
+      display:flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    .donation form {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .donation button svg {
+      height: 28px;
+      margin-right: 8px;
+    }
+    .donation button {
+      background-color: rgba(0,0,0,.5);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button:focus, button:hover {
+      background-color: rgba(0,0,0,.9);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <main>
+      <div class="header">
+        <img class="avatar" src="https://karmapoint.carrd.co/assets/images/image01.jpg?v=91c91b32" alt="brent" />
+        <h1 class="title">Brent Gummow</h1>
+      </div>
+
+      <div class="content">
+        <p class="content__blurb">Full Stack Software Developer with skills in JavaScript, Ruby, and React to compliment years of experience in web
+        design, product leadership, project management, and video production.</p>
+ 
+        <div class="content__more hid">Having worked with SMB's on their web needs for over 25 years, I'm well acquainted with the requirements of the Mom &
+        Pop's, the regional non-profits, the arts organizations, as well as the new side-hustle ecommerce providers.</div>
+
+        <a class="content__toggle" href="/">Read More >></a>
+        <a class="content__toggle hid" href="/"><< Read Less</a>
+      </div>
+      <div class="links">
+        <button>Website</button>
+        <button>LikedIn</button>
+        <button>Github</button>
+        <button>Twitter</button>
+        <div class="donation">
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="business" value="karmapoint@gmail.com">
+            <input type="hidden" name="cmd" value="_donations">
+            <input type="hidden" name="item_name" value="Donation">
+            <input type="hidden" name="item_number" value="From KarmaCard">
+            <input type="hidden" name="currency_code" value="USD">
+            <button name="submit">
+              <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="donate"
+                class="svg-inline--fa fa-donate fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path fill="currentColor"
+                  d="M224.7 215.7l56.4 16.1c8.8 2.5 14.9 10.6 14.9 19.7 0 11.3-9.2 20.5-20.5 20.5h-36.9c-8.2 0-16.1-2.6-22.6-7.3-3-2.2-7.2-1.5-9.8 1.2l-11.4 11.4c-3.5 3.5-2.9 9.2 1 12.2 12.3 9.4 27.2 14.5 42.9 14.5h1.4v24c0 4.4 3.6 8 8 8h16c4.4 0 8-3.6 8-8v-24h1.4c22.8 0 44.3-13.6 51.7-35.2 10.1-29.6-7.3-59.8-35.1-67.8L231 184.1c-8.8-2.5-14.9-10.6-14.9-19.7 0-11.3 9.2-20.5 20.5-20.5h36.9c8.2 0 16.1 2.6 22.6 7.3 3 2.2 7.2 1.5 9.8-1.2l11.4-11.4c3.5-3.5 2.9-9.2-1-12.2-12.3-9.4-27.2-14.5-42.9-14.5H272V88c0-4.4-3.6-8-8-8h-16c-4.4 0-8 3.6-8 8v24h-3.5c-30.6 0-55.1 26.3-52.2 57.5 2 22.1 19 40.1 40.4 46.2zM480 288h-32c10.3-24.6 16-51.6 16-80C464 93.1 370.9 0 256 0S48 93.1 48 208c0 28.4 5.7 55.4 16 80H32c-17.7 0-32 14.4-32 32v160c0 17.6 14.3 32 32 32h448c17.7 0 32-14.4 32-32V320c0-17.6-14.3-32-32-32zM256 32c97 0 176 79 176 176s-79 176-176 176S80 305 80 208 159 32 256 32zm224 448H32V320h48.9c16.6 25.8 38.6 47.7 64.6 64H104c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h304c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8h-41.5c26-16.3 48-38.2 64.6-64H480v160z">
+                </path>
+              </svg>
+              Donate
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <div class="overlay"></div>
+    <div class="background_image"></div>
+  </div>
+  <aside class="watermark"><img src="noun_karma_737423.svg" /> <div>Made with KarmaCard</div></aside>
+  <script>
+    const toggleMore = e => {
+      e.preventDefault();
+      if (e.target.classList.contains('hid')) return;
+      const moreBlock = document.querySelector('.content__more')
+      if (moreBlock.classList.contains('hid')) {
+        moreBlock.classList.remove('hid');
+      } else {
+        moreBlock.classList.add('hid');
+      }
+      toggle.forEach(el => {
+        if (el.classList.contains('hid')) {
+          el.classList.remove('hid');
+        } else {
+          el.classList.add('hid')
+        };
+      })
+    }
+    const toggle = document.querySelectorAll('.content__toggle');
+    
+    toggle.forEach(el => {
+      el.addEventListener('click', e => toggleMore(e))
+      el.addEventListener('touchStart', e => toggleMore(e))
+    })
+  </script>
+</body>
+
+</html>

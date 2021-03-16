@@ -1,0 +1,75 @@
+/* https://source.unsplash.com/ */
+body{
+  margin:0;
+  font-family: Raleway;
+  background-image: url("https://source.unsplash.com/random/1200x800");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.wrapper{
+  height: 100%;
+  padding: 18px;
+  padding-bottom: 60px; 
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+
+}
+.main{
+  width: 100%;
+  min-width: 320px;
+  border-radius: 20px;
+}
+.avatar {
+  border-radius: 50%;
+  width: 260px;
+  margin: 32px;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background-color: rgba(0,0,0,0.65);
+  color: #fff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.content {
+  background-color: #fff;
+  height: 200px;
+}
+.bottom {
+  background-color: red;
+  height: 50px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.watermark {
+  cursor: pointer;
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  background-color: #eee;
+  height: 20px;
+  width: 320px;
+  padding: 8px;
+  color: #fff;
+  font-size: .8rem;
+  background: -moz-linear-gradient(left,  rgba(0,0,0,0.65) 3%, rgba(0,0,0,0.1) 85%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  rgba(0,0,0,0.65) 3%,rgba(0,0,0,0.1) 85%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  rgba(0,0,0,0.65) 3%,rgba(0,0,0,0.1) 85%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  font-family: Raleway;
+  }
+
+.watermark img {
+  height: 20px;
+  margin-right: 8px;
+}
+
+
+
+
+
